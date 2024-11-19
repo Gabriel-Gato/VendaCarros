@@ -64,6 +64,7 @@ public class LoginServicos {
             alterado.setEmail(login.getEmail());
             alterado.setCep(login.getCep());
             alterado.setSenha(login.getSenha());
+            alterado.setCpf(login.getCpf());
 
             return loginRepositorio.save(alterado);
         }

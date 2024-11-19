@@ -27,8 +27,13 @@ public class CarrosServicos {
         return carrosRepositorio.findAll();
     }
 
+    public List<Carros> findByNome(String nome) {
+        return carrosRepositorio.findByNomeContainingIgnoreCase(nome);
+
+    }
+
     @RestController
-    @RequestMapping(value = "VendaCarros")
+    @RequestMapping(value = "Carros")
     public class vendaCarrosRecurso {
         @Autowired
         private CarrosServicos carrosServicos;
@@ -42,6 +47,12 @@ public class CarrosServicos {
         @GetMapping
         public ResponseEntity<List<Carros>> findAll() {
             List<Carros> carros = carrosServicos.findAll();
+            return ResponseEntity.ok().body(carros);
+        }
+
+        @GetMapping(value = "/nome/{nome}")
+        public ResponseEntity<List<Carros>> findByNome(@PathVariable String nome) {
+            List<Carros> carros = carrosServicos.findByNome(nome);
             return ResponseEntity.ok().body(carros);
         }
 
@@ -61,13 +72,16 @@ public class CarrosServicos {
         if(alterado!=null){
             alterado.setPreco(carros.getPreco());
             alterado.setModelo(carros.getModelo());
-            alterado.setMarca(carros.getMarca());
-            alterado.setEstado(carros.getEstado());
-            alterado.setDirecao(carros.getDirecao());
-            alterado.setDetalhes(carros.getDetalhes());
-            alterado.setCores(carros.getCores());
-            alterado.setAros(carros.getAros());
-            alterado.setCombustivel(carros.getCombustivel());
+            alterado.setAceleração(carros.getAceleração());
+            alterado.setConsumo(carros.getConsumo());
+            alterado.setNome(carros.getNome());
+            alterado.setDescricao(carros.getDescricao());
+            alterado.setTorque(carros.getTorque());
+            alterado.setPower(carros.getPower());
+            alterado.setMotor(carros.getMotor());
+            alterado.setImagem(carros.getImagem());
+            alterado.setImage1(carros.getImage1());
+            alterado.setImage2(carros.getImage2());
 
             return carrosRepositorio.save(alterado);
         }

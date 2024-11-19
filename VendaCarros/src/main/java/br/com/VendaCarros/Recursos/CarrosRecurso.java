@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/carros")
@@ -19,6 +20,12 @@ public class CarrosRecurso {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Carros> findById(@PathVariable Integer id) {
         Carros carros = carrosServicos.findyById(id);
+        return ResponseEntity.ok().body(carros);
+    }
+
+    @GetMapping(value = "/nome/{nome}")
+    public ResponseEntity<List<Carros>> findByNome(@PathVariable String nome) {
+        List<Carros> carros = carrosServicos.findByNome(nome);
         return ResponseEntity.ok().body(carros);
     }
 
