@@ -41,7 +41,7 @@ public class BDServico {
         login1.setNome("Marcos");
         login1.setCep("04102596");
         login1.setSenha("123");
-        login1.setCpf(12313123);
+        login1.setCpf("12313123");
         login1.setEmail("marcosmonteiros@gmail.com");
 
         loginRepositorio.saveAll(asList(login1));

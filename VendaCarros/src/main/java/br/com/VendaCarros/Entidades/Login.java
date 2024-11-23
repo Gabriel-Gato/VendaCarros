@@ -23,7 +23,7 @@ public class Login implements Serializable {
     String email;
 
     @Column (name = "CPF")
-    int cpf;
+    String cpf;
 
     @Column (name = "CEP")
     String cep;
@@ -59,11 +59,11 @@ public class Login implements Serializable {
         return cep;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
